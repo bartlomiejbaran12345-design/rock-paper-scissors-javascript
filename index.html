@@ -7,6 +7,10 @@
 </head>
 <body>
     <script>
+function playGame() {
+  let humanScore = 0;
+  let computerScore = 0;
+
 function getComputerChoice() {
   const randomNumber = Math.random();
 
@@ -23,6 +27,42 @@ function getHumanChoice() {
   const humanChoice = prompt("Enter your choice: rock, paper, or scissors");
   return humanChoice;
 }
+
+function playRound(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
+
+  if (humanChoice === computerChoice) {
+    console.log("It's a tie!");
+  } else if (
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
+  ) {
+    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+    humanScore++;
+  } else {
+    console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+    computerScore++;
+  }
+}
+
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+  playRound(getHumanChoice(), getComputerChoice());
+
+  console.log(`Wynik końcowy — Ty: ${humanScore} | Komputer: ${computerScore}`);
+  if (humanScore > computerScore) {
+    console.log("Wygrałeś grę!");
+  } else if (computerScore > humanScore) {
+    console.log("Komputer wygrał grę!");
+  } else {
+    console.log("Remis!");
+  }
+}
+
+playGame();
     </script>
     
 </body>
